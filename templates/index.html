@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+<body>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <textarea type="text" id="username" name="username" required></textarea><br>
+
+        <label for="password">Password:</label>
+        <input type="text" id="password" name="password" required><br>
+
+        <label for="convo_id">Convo_id:</label>
+        <input type="text" id="convo_id" name="convo_id" required><br>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea><br>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+    <script>
+        function submitForm() {
+            // Get values from form fields
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var convo_id = document.getElementById("convo_id").value;
+            var message = document.getElementById("message").value;
+
+            // Create an object with form data
+            var formData = {
+                username: username,
+                password: password,
+                convo_id: convo_id,
+                message: message
+            };
+
+            // Send a POST request using Fetch API
+            fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                // Handle success, e.g., redirect to another page
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                // Handle error, e.g., display an error message to the user
+            });
+        }
+    </script>
+</body>
+</html>
