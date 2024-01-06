@@ -98,7 +98,7 @@ def send_messages():
 
 #  with open(text_file_path, 'r') as file:
 #   messages = file.readlines()
- messages=["testing"]
+ messages=[""]
 
  num_messages = len(messages)
  max_tokens = min(num_tokens, num_messages)
@@ -109,7 +109,7 @@ def send_messages():
 
 #  with open('time.txt', 'r') as file:
 #   speed = int(file.read().strip())
- speed=5
+ speed=2
 
  liness()
 
